@@ -15,6 +15,368 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style aku.css">
+
+<style>
+/* Dokumentasi — pure CSS, tetap memakai style aku.css */
+.documentation-section > .container > input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.documentation-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 34px;
+}
+
+.documentation-tabs label {
+    cursor: pointer;
+    padding: 11px 20px;
+    border: 1px solid rgba(20, 42, 76, .14);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .25s ease;
+    background: #fff;
+}
+
+.documentation-tabs label:hover {
+    transform: translateY(-2px);
+}
+
+#doc-all:checked ~ .documentation-tabs label[for="doc-all"],
+#doc-program:checked ~ .documentation-tabs label[for="doc-program"],
+#doc-kegiatan:checked ~ .documentation-tabs label[for="doc-kegiatan"] {
+    background: #123b70;
+    color: #fff;
+    border-color: #123b70;
+}
+
+#doc-program:checked ~ .documentation-gallery .doc-card.kegiatan,
+#doc-kegiatan:checked ~ .documentation-gallery .doc-card.program {
+    display: none;
+}
+
+.documentation-gallery .doc-card {
+    animation: docFade .35s ease;
+}
+
+@keyframes docFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Search bar — tanpa JS, hanya tampilan/input */
+.documentation-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.documentation-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: min(420px, 100%);
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid rgba(20, 42, 76, .14);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(20, 42, 76, .06);
+}
+
+.documentation-search svg {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+.documentation-search input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+}
+
+.documentation-search input::placeholder {
+    color: #8a94a6;
+}
+
+.documentation-count {
+    font-size: 14px;
+    font-weight: 700;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+/* Pagination pure CSS */
+.documentation-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 34px;
+}
+
+.documentation-pagination label {
+    display: grid;
+    place-items: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid rgba(20, 42, 76, .14);
+    border-radius: 10px;
+    background: #fff;
+    color: #123b70;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.documentation-pagination label:hover {
+    transform: translateY(-2px);
+    border-color: #123b70;
+}
+
+#doc-page-1:checked ~ .documentation-pagination label[for="doc-page-1"],
+#doc-page-2:checked ~ .documentation-pagination label[for="doc-page-2"] {
+    background: #123b70;
+    color: #fff;
+    border-color: #123b70;
+}
+
+/* 3 kartu per halaman */
+#doc-page-1:checked ~ .documentation-gallery .doc-card:nth-child(n+4),
+#doc-page-2:checked ~ .documentation-gallery .doc-card:nth-child(-n+3) {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .documentation-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+    }
+
+    .documentation-tabs label {
+        white-space: nowrap;
+    }
+}
+</style>
+
+<style>
+/* =========================================================
+   DOKUMENTASI UI — DESKTOP + MOBILE POLISH
+   Pure CSS, tanpa JavaScript
+========================================================= */
+.documentation-section {
+    padding-top: clamp(38px, 5vw, 64px);
+    padding-bottom: clamp(48px, 6vw, 76px);
+}
+
+.documentation-section > .container {
+    width: min(1180px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+.documentation-toolbar {
+    display: grid;
+    grid-template-columns: minmax(280px, 420px) 1fr auto;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.documentation-search {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(20, 42, 76, .05);
+}
+
+.documentation-search:focus-within {
+    border-color: rgba(18, 59, 112, .42);
+    box-shadow: 0 0 0 4px rgba(18, 59, 112, .08);
+}
+
+.documentation-count {
+    justify-self: end;
+    font-size: 13px;
+    letter-spacing: .01em;
+}
+
+.documentation-tabs {
+    justify-content: flex-start;
+    gap: 8px;
+    margin: 0 0 28px;
+    padding: 0;
+}
+
+.documentation-tabs label {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    white-space: nowrap;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(20, 42, 76, .03);
+}
+
+.documentation-tabs label:hover {
+    transform: translateY(-1px);
+}
+
+.documentation-gallery {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    width: 100%;
+}
+
+.documentation-gallery .doc-card {
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1.42 / 1;
+    min-height: 0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.documentation-gallery .doc-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.documentation-gallery .gallery-info {
+    padding: 20px;
+}
+
+.documentation-gallery .gallery-info h3 {
+    margin: 8px 0 4px;
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.2;
+}
+
+.documentation-gallery .gallery-info p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.documentation-pagination {
+    margin-top: 30px;
+    gap: 7px;
+}
+
+.documentation-pagination label {
+    min-width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.documentation-pagination .page-arrow {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .documentation-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .documentation-toolbar {
+        grid-template-columns: minmax(240px, 1fr) auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .documentation-section > .container {
+        width: min(100% - 28px, 560px);
+    }
+
+    .documentation-toolbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .documentation-search {
+        min-height: 50px;
+    }
+
+    .documentation-count {
+        justify-self: start;
+        padding-left: 2px;
+    }
+
+    .documentation-tabs {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-bottom: 20px;
+        padding-bottom: 3px;
+    }
+
+    .documentation-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .documentation-tabs label {
+        flex: 0 0 auto;
+        min-height: 40px;
+        padding-inline: 16px;
+    }
+
+    .documentation-gallery {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .documentation-gallery .doc-card {
+        aspect-ratio: 1.55 / 1;
+        border-radius: 17px;
+    }
+
+    .documentation-gallery .gallery-info {
+        padding: 17px;
+    }
+
+    .documentation-gallery .gallery-info h3 {
+        font-size: 17px;
+    }
+
+    .documentation-gallery .gallery-info p {
+        font-size: 12px;
+    }
+
+    .documentation-pagination {
+        margin-top: 24px;
+    }
+}
+
+
+</style>
+
 </head>
 
 <body id="top">
@@ -107,220 +469,100 @@
 </section>
 
 
-<section class="section">
-
+<section class="section documentation-section">
     <div class="container">
 
+        <!-- PURE CSS FILTER -->
+        <input type="radio" name="doc-filter" id="doc-all" checked>
+        <input type="radio" name="doc-filter" id="doc-program">
+        <input type="radio" name="doc-filter" id="doc-kegiatan">
 
-        <div class="pill-tabs">
+        <input type="radio" name="doc-page" id="doc-page-1" checked>
+        <input type="radio" name="doc-page" id="doc-page-2">
 
-            <a href="dokumentasi.html" class="active">
-                Semua
+        <div class="documentation-toolbar">
+            <div class="documentation-search">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="m20 20-4-4"></path>
+                </svg>
+                <input type="search" placeholder="Cari dokumentasi..." aria-label="Cari dokumentasi">
+            </div>
+
+            <div class="documentation-count">6 dokumentasi</div>
+        </div>
+
+        <div class="pill-tabs documentation-tabs">
+            <label for="doc-all">Semua</label>
+            <label for="doc-program">Program Kerja</label>
+            <label for="doc-kegiatan">Kegiatan</label>
+        </div>
+
+        <div class="gallery documentation-gallery">
+
+            <a href="#workshop" class="gallery-card doc-card program">
+                <img src="C:\Users\nanda\Downloads\masa\nyoba lagi\himatif-web-main\assets\img\Workshop.JPG" alt="Workshop teknologi">
+                <div class="gallery-info">
+                    <span class="tag">PROGRAM KERJA</span>
+                    <h3>Workshop Teknologi</h3>
+                    <p>Pelatihan dan berbagi pengetahuan.</p>
+                </div>
             </a>
 
-            <a href="#program">
-                Program Kerja
+            <a href="#seminar" class="gallery-card doc-card kegiatan">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85" alt="Seminar mahasiswa">
+                <div class="gallery-info">
+                    <span class="tag">KEGIATAN</span>
+                    <h3>Seminar &amp; Sharing</h3>
+                    <p>Forum belajar dan diskusi mahasiswa.</p>
+                </div>
             </a>
 
-            <a href="#kegiatan">
-                Kegiatan
+            <a href="#sosial" class="gallery-card doc-card kegiatan">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Kegiatan sosial">
+                <div class="gallery-info">
+                    <span class="tag">KEGIATAN</span>
+                    <h3>Aksi Sosial</h3>
+                    <p>Kegiatan kontribusi kepada masyarakat.</p>
+                </div>
+            </a>
+
+            <a href="#gathering" class="gallery-card doc-card program">
+                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Campus gathering">
+                <div class="gallery-info">
+                    <span class="tag">PROGRAM KERJA</span>
+                    <h3>Campus Gathering</h3>
+                    <p>Membangun kedekatan antar mahasiswa.</p>
+                </div>
+            </a>
+
+            <a href="#rapat" class="gallery-card doc-card kegiatan">
+                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Rapat organisasi">
+                <div class="gallery-info">
+                    <span class="tag">KEGIATAN</span>
+                    <h3>Rapat &amp; Evaluasi</h3>
+                    <p>Koordinasi dan evaluasi program.</p>
+                </div>
+            </a>
+
+            <a href="#kompetisi" class="gallery-card doc-card program">
+                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Kompetisi teknologi">
+                <div class="gallery-info">
+                    <span class="tag">PROGRAM KERJA</span>
+                    <h3>Kompetisi Teknologi</h3>
+                    <p>Ruang unjuk karya dan prestasi.</p>
+                </div>
             </a>
 
         </div>
 
-
-        <div class="gallery">
-
-
-            <!-- PROGRAM 1 -->
-
-            <a
-                href="#workshop"
-                class="gallery-card"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=85"
-                    alt="Workshop teknologi"
-                >
-
-                <div class="gallery-info">
-
-                    <span class="tag">
-                        PROGRAM KERJA
-                    </span>
-
-                    <h3>
-                        Workshop Teknologi
-                    </h3>
-
-                    <p>
-                        Pelatihan dan berbagi pengetahuan.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- KEGIATAN 1 -->
-
-            <a
-                href="#seminar"
-                class="gallery-card"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85"
-                    alt="Seminar mahasiswa"
-                >
-
-                <div class="gallery-info">
-
-                    <span class="tag">
-                        KEGIATAN
-                    </span>
-
-                    <h3>
-                        Seminar & Sharing
-                    </h3>
-
-                    <p>
-                        Forum belajar dan diskusi mahasiswa.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- KEGIATAN 2 -->
-
-            <a
-                href="#sosial"
-                class="gallery-card"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=85"
-                    alt="Kegiatan sosial"
-                >
-
-                <div class="gallery-info">
-
-                    <span class="tag">
-                        KEGIATAN
-                    </span>
-
-                    <h3>
-                        Aksi Sosial
-                    </h3>
-
-                    <p>
-                        Kegiatan kontribusi kepada masyarakat.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- PROGRAM 2 -->
-
-            <a
-                href="#gathering"
-                class="gallery-card"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1000&q=85"
-                    alt="Campus gathering"
-                >
-
-                <div class="gallery-info">
-
-                    <span class="tag">
-                        PROGRAM KERJA
-                    </span>
-
-                    <h3>
-                        Campus Gathering
-                    </h3>
-
-                    <p>
-                        Membangun kedekatan antar mahasiswa.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- KEGIATAN 3 -->
-
-            <a
-                href="#rapat"
-                class="gallery-card"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=85"
-                    alt="Rapat organisasi"
-                >
-
-                <div class="gallery-info">
-
-                    <span class="tag">
-                        KEGIATAN
-                    </span>
-
-                    <h3>
-                        Rapat & Evaluasi
-                    </h3>
-
-                    <p>
-                        Koordinasi dan evaluasi program.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- PROGRAM 3 -->
-
-            <a
-                href="#kompetisi"
-                class="gallery-card"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1000&q=85"
-                    alt="Kompetisi teknologi"
-                >
-
-                <div class="gallery-info">
-
-                    <span class="tag">
-                        PROGRAM KERJA
-                    </span>
-
-                    <h3>
-                        Kompetisi Teknologi
-                    </h3>
-
-                    <p>
-                        Ruang unjuk karya dan prestasi.
-                    </p>
-
-                </div>
-
-            </a>
-
+        <div class="documentation-pagination" aria-label="Pagination dokumentasi">
+            <label class="page-arrow" for="doc-page-1" aria-label="Halaman sebelumnya">‹</label>
+            <label class="page-number" for="doc-page-1">1</label>
+            <label class="page-number" for="doc-page-2">2</label>
+            <label class="page-arrow" for="doc-page-2" aria-label="Halaman berikutnya">›</label>
         </div>
-
     </div>
-
 </section>
 
 
@@ -333,7 +575,7 @@
     <div class="modal-box">
 
         <a href="#" class="modal-close">
-            Ã—
+            x
         </a>
 
 
@@ -364,7 +606,7 @@
                 <div class="modal-slide">
 
                     <img
-                        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1400&q=85"
+                        src="C:\Users\nanda\Downloads\masa\nyoba lagi\himatif-web-main\assets\img\Workshop.JPG"
                         alt="Workshop"
                     >
 
@@ -436,7 +678,7 @@
     <div class="modal-box">
 
         <a href="#" class="modal-close">
-            Ã—
+            x
         </a>
 
 
@@ -539,7 +781,7 @@
     <div class="modal-box">
 
         <a href="#" class="modal-close">
-            Ã—
+            x
         </a>
 
 

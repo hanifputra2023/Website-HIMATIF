@@ -100,120 +100,180 @@
     </section>
 
 
-    <section class="section">
+    <section class="section information-section">
         <div class="container">
 
-            <div class="pill-tabs">
-                <a class="active" href="informasi.html">
-                    Prestasi Mahasiswa
-                </a>
+            <!-- PURE CSS TABS -->
+            <input class="info-tab-radio" type="radio" name="info-tab" id="info-prestasi" checked>
+            <input class="info-tab-radio" type="radio" name="info-tab" id="info-produk">
+            <input class="info-tab-radio" type="radio" name="info-tab" id="info-peluang">
 
-                <a href="#produk">
-                    Produk HIMATIF
-                </a>
-
-                <a href="#peluang">
-                    Lomba, Beasiswa & Pelatihan
-                </a>
+            <div class="information-tabs pill-tabs" role="tablist" aria-label="Kategori informasi HIMATIF">
+                <label for="info-prestasi">Prestasi Mahasiswa</label>
+                <label for="info-produk">Produk HIMATIF</label>
+                <label for="info-peluang">Lomba, Beasiswa &amp; Pelatihan</label>
             </div>
 
+            <!-- PRESTASI -->
+            <div class="information-panel panel-prestasi">
+                <div class="section-head information-panel-head">
+                    <span class="eyebrow">Prestasi Mahasiswa</span>
+                    <h2 class="title">Karya dan pencapaian mahasiswa</h2>
+                    <p class="section-description">
+                        Ruang informasi untuk mempublikasikan pencapaian, kompetisi,
+                        sertifikasi, dan karya mahasiswa yang membawa nama baik HIMATIF.
+                    </p>
+                </div>
 
-            <div class="cards">
-
-                <article class="card">
-                    <img
-                        class="card-img"
-                        src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1000&q=85"
-                        alt="Prestasi"
-                    >
-
-                    <div class="card-body">
-
-                        <div class="meta">
-                            <span>PRESTASI</span>
+                <div class="cards information-cards">
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1000&q=85"
+                             alt="Prestasi mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>PRESTASI</span></div>
+                            <h3>Publikasi Pencapaian</h3>
+                            <p>Tempat untuk membagikan pencapaian mahasiswa dalam bidang akademik maupun nonakademik.</p>
+                            <a class="link" href="#prestasi">Lihat informasi →</a>
                         </div>
+                    </article>
 
-                        <h3>
-                            Ruang untuk karya mahasiswa
-                        </h3>
-
-                        <p>
-                            Publikasikan pencapaian, kompetisi, sertifikasi,
-                            dan karya mahasiswa yang membawa nama baik organisasi.
-                        </p>
-
-                        <a class="link" href="#">
-                            Baca selengkapnya â†’
-                        </a>
-
-                    </div>
-                </article>
-
-
-                <article class="card">
-                    <img
-                        class="card-img"
-                        src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=85"
-                        alt="Produk"
-                    >
-
-                    <div class="card-body">
-
-                        <div class="meta">
-                            <span>PRODUK HIMATIF</span>
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85"
+                             alt="Kompetisi mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>KOMPETISI</span></div>
+                            <h3>Kompetisi &amp; Karya</h3>
+                            <p>Informasi untuk menampilkan pengalaman mengikuti kompetisi dan karya yang dikembangkan mahasiswa.</p>
+                            <a class="link" href="#prestasi">Lihat informasi →</a>
                         </div>
+                    </article>
 
-                        <h3>
-                            Merchandise & karya kreatif
-                        </h3>
-
-                        <p>
-                            Ruang promosi untuk produk, merchandise,
-                            dan karya kreatif yang dikembangkan mahasiswa.
-                        </p>
-
-                        <a class="link" href="#">
-                            Lihat produk â†’
-                        </a>
-
-                    </div>
-                </article>
-
-
-                <article class="card">
-                    <img
-                        class="card-img"
-                        src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=85"
-                        alt="Pelatihan"
-                    >
-
-                    <div class="card-body">
-
-                        <div class="meta">
-                            <span>PELUANG</span>
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=85"
+                             alt="Sertifikasi mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>SERTIFIKASI</span></div>
+                            <h3>Sertifikasi &amp; Pengembangan</h3>
+                            <p>Ruang dokumentasi pencapaian dan proses pengembangan kompetensi mahasiswa.</p>
+                            <a class="link" href="#prestasi">Lihat informasi →</a>
                         </div>
+                    </article>
+                </div>
+            </div>
 
-                        <h3>
-                            Lomba, beasiswa & pelatihan
-                        </h3>
+            <!-- PRODUK -->
+            <div class="information-panel panel-produk">
+                <div class="section-head information-panel-head">
+                    <span class="eyebrow">Produk HIMATIF</span>
+                    <h2 class="title">Produk dan karya kreatif</h2>
+                    <p class="section-description">
+                        Ruang promosi untuk produk, merchandise, dan karya kreatif
+                        yang dikembangkan mahasiswa.
+                    </p>
+                </div>
 
-                        <p>
-                            Informasi kesempatan pengembangan diri yang dapat
-                            diikuti mahasiswa Teknologi Informasi.
-                        </p>
+                <div class="cards information-cards">
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=85"
+                             alt="Merchandise HIMATIF">
+                        <div class="card-body">
+                            <div class="meta"><span>MERCHANDISE</span></div>
+                            <h3>Merchandise HIMATIF</h3>
+                            <p>Informasi produk yang dapat mendukung identitas dan aktivitas HIMATIF.</p>
+                            <a class="link" href="#produk">Lihat produk →</a>
+                        </div>
+                    </article>
 
-                        <a class="link" href="#">
-                            Lihat peluang â†’
-                        </a>
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1000&q=85"
+                             alt="Karya kreatif mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>KARYA</span></div>
+                            <h3>Karya Kreatif</h3>
+                            <p>Ruang untuk memperkenalkan karya kreatif yang dikembangkan oleh mahasiswa.</p>
+                            <a class="link" href="#produk">Lihat karya →</a>
+                        </div>
+                    </article>
 
-                    </div>
-                </article>
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85"
+                             alt="Informasi produk">
+                        <div class="card-body">
+                            <div class="meta"><span>INFORMASI</span></div>
+                            <h3>Katalog &amp; Informasi Produk</h3>
+                            <p>Bagian untuk menampilkan detail produk dan karya yang tersedia.</p>
+                            <a class="link" href="#produk">Lihat katalog →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
 
+            <!-- PELUANG -->
+            <div class="information-panel panel-peluang">
+                <div class="section-head information-panel-head">
+                    <span class="eyebrow">Peluang Pengembangan</span>
+                    <h2 class="title">Lomba, beasiswa &amp; pelatihan</h2>
+                    <p class="section-description">
+                        Rangkuman peluang yang dapat membantu mahasiswa mengembangkan
+                        kompetensi dan pengalaman.
+                    </p>
+                </div>
+
+                <div class="cards information-cards">
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=85"
+                             alt="Pelatihan mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>PELATIHAN</span></div>
+                            <h3>Pelatihan &amp; Workshop</h3>
+                            <p>Informasi kegiatan pengembangan kompetensi yang dapat diikuti mahasiswa.</p>
+                            <a class="link" href="#peluang">Lihat peluang →</a>
+                        </div>
+                    </article>
+
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85"
+                             alt="Lomba mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>LOMBA</span></div>
+                            <h3>Lomba &amp; Kompetisi</h3>
+                            <p>Ruang untuk membagikan informasi kesempatan mengikuti lomba dan kompetisi.</p>
+                            <a class="link" href="#peluang">Lihat peluang →</a>
+                        </div>
+                    </article>
+
+                    <article class="card information-card">
+                        <img class="card-img"
+                             src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85"
+                             alt="Beasiswa mahasiswa">
+                        <div class="card-body">
+                            <div class="meta"><span>BEASISWA</span></div>
+                            <h3>Beasiswa &amp; Pengembangan Diri</h3>
+                            <p>Ruang informasi peluang yang mendukung pengembangan diri mahasiswa.</p>
+                            <a class="link" href="#peluang">Lihat peluang →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="information-note">
+                <div class="information-note-icon">i</div>
+                <div>
+                    <strong>Butuh informasi lebih lanjut?</strong>
+                    <p>Gunakan kategori di atas untuk melihat informasi sesuai kebutuhanmu.</p>
+                </div>
             </div>
 
         </div>
     </section>
-
 
     <section class="section alt">
         <div class="container">
@@ -471,4 +531,3 @@
 
 </body>
 </html>
-
