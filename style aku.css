@@ -4215,18 +4215,19 @@ textarea {
 @media(max-width:900px){.information-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.information-card:last-child{grid-column:1/-1;max-width:calc(50% - 9px);margin-inline:auto}}
 @media(max-width:600px){.information-section{padding-top:38px;padding-bottom:52px}.information-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px;margin-bottom:26px;scrollbar-width:none}.information-tabs::-webkit-scrollbar{display:none}.information-tabs label{flex:0 0 auto;white-space:nowrap;padding-inline:17px}.information-panel-head{margin-bottom:22px;text-align:left}.section-description{margin-inline:0;font-size:13px}.information-cards{grid-template-columns:1fr;gap:16px}.information-card:last-child{grid-column:auto;max-width:none}.information-card .card-img{height:200px}.information-card .card-body{height:auto}.information-note{align-items:flex-start;margin-top:24px;padding:16px}}
 /* =========================================================
-   RESPONSIVE MOBILE & TABLET STYLES
+/* =========================================================
+   RESPONSIVE MOBILE 2 KOLOM GRID FIX
 ========================================================= */
 
+/* Tablet (Max Width: 900px) */
 @media (max-width: 900px) {
-  /* Section Spacing & Grid Adjustments */
   .section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
 
   .split {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 
   .visual-card {
@@ -4234,11 +4235,11 @@ textarea {
     max-width: 100%;
   }
 
-  /* Page Hero Section Adjustments */
+  /* Page Hero */
   .page-hero {
     min-height: auto;
     padding-top: calc(var(--nav-height, 80px) + 30px);
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     text-align: center;
   }
 
@@ -4255,96 +4256,107 @@ textarea {
     display: none;
   }
 
-  /* Info Grid (Prinsip & Nilai) */
-  .info-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .info-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-
-  /* Cards & Mission Grids */
-  .mission-grid,
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  /* Team & Gallery Grid */
+  /* Divisi, Team/Pengurus, & Gallery Grid (2 Kolom) */
+  .divisi-grid,
   .team-grid,
   .gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .info-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .team-card {
-    height: 340px;
-  }
-
-  /* Divisi Grid */
-  .divisi-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .divisi-body {
-    flex-direction: column;
-  }
-
-  .divisi-badge-block {
-    width: 100%;
-    height: 140px;
-  }
-
-  /* Contact Grid */
-  .contact-grid {
-    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
+/* Smartphone / HP Terkecil (Max Width: 600px & Ultra-Small) */
 @media (max-width: 600px) {
+  /* Tetap 2 Kolom untuk Kartu Divisi & Pengurus */
+  .divisi-grid,
+  .team-grid,
+  .gallery,
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Penyesuaian Ukuran Kartu Pengurus agar Pas & Rapi di 2 Kolom Mobile */
+  .team-card {
+    height: 240px !important; /* Menyesuaikan tinggi foto pengurus */
+    border-radius: 12px;
+  }
+
+  .team-card .team-body,
+  .team-card .team-info {
+    padding: 10px !important;
+  }
+
+  .team-card h3,
+  .team-card .team-name {
+    font-size: 13px !important;
+    line-height: 1.2;
+  }
+
+  .team-card p,
+  .team-card .team-role {
+    font-size: 11px !important;
+  }
+
+  /* Penyesuaian Kartu Divisi agar Muat 2 Kolom */
+  .divisi-card {
+    padding: 12px !important;
+    border-radius: 12px;
+  }
+
+  .divisi-body {
+    flex-direction: column !important;
+    gap: 8px;
+  }
+
+  .divisi-badge-block {
+    width: 100% !important;
+    height: 90px !important;
+  }
+
+  .divisi-card h3 {
+    font-size: 14px !important;
+  }
+
+  .divisi-card p {
+    font-size: 11px !important;
+    line-height: 1.3;
+  }
+
+  /* Penyesuaian Teks & Header */
   .section-head {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .title {
-    font-size: 26px;
+    font-size: 22px !important;
   }
 
   .lead {
-    font-size: 14px;
+    font-size: 13px !important;
   }
 
   .quote {
-    padding: 16px;
-    font-size: 13px;
+    padding: 12px;
+    font-size: 12px;
     border-left-width: 3px;
-  }
-
-  .team-grid,
-  .gallery {
-    grid-template-columns: 1fr;
   }
 
   /* Footer Adjustments */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .footer-brand {
-    grid-column: span 1;
+    gap: 24px;
   }
 
   .footer-bottom {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     text-align: center;
+    font-size: 12px;
   }
 }
