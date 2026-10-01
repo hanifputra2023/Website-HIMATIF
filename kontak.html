@@ -114,13 +114,17 @@
                 </h2>
 
 
-                <div class="fake-form">
+                <form class="fake-form" id="feedback-form">
 
                     <label>
                         Nama Lengkap
                         <input
                             type="text"
+                            id="nama"
+                            name="nama"
                             placeholder="Masukkan nama"
+                            autocomplete="name"
+                            required
                         >
                     </label>
 
@@ -129,7 +133,11 @@
                         Alamat Email
                         <input
                             type="email"
+                            id="email"
+                            name="email"
                             placeholder="nama@email.com"
+                            autocomplete="email"
+                            required
                         >
                     </label>
 
@@ -138,6 +146,8 @@
                         Kategori
 
                         <select
+                            id="kategori"
+                            name="kategori"
                             style="width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 12px;"
                         >
                             <option>Kritik & Saran</option>
@@ -152,19 +162,23 @@
                         Pesan
 
                         <textarea
+                            id="pesan"
+                            name="pesan"
                             placeholder="Tuliskan pesan Anda di sini..."
+                            rows="5"
+                            required
                         ></textarea>
                     </label>
 
 
-                    <a
-                        class="btn"
-                        href="mailto:sekretariat.himatif@example.com?subject=Feedback%20HIMATIF"
-                    >
-                        Kirim melalui Email â†’
-                    </a>
+                    <button class="btn" type="submit">
+                        Kirim melalui Email &rarr;
+                    </button>
+                    <p class="form-note" id="form-note" aria-live="polite">
+                        Pesan akan disiapkan melalui aplikasi email di perangkat Anda.
+                    </p>
 
-                </div>
+                </form>
 
             </div>
 
@@ -186,7 +200,7 @@
                             <div>
                                 <b>Email</b>
                                 <span>
-                                    sekretariat.himatif@example.com
+                                    untidarhimatif@gmail.com
                                 </span>
                             </div>
                         </div>
@@ -198,19 +212,19 @@
                             <div>
                                 <b>Instagram</b>
                                 <span>
-                                    @himatif
+                                    @himatif.untidar
                                 </span>
                             </div>
                         </div>
 
 
                         <div class="contact-item">
-                            <div class="info-icon">âŒ–</div>
+                            <div class="info-icon" aria-hidden="true">⌖</div>
 
                             <div>
                                 <b>Alamat</b>
                                 <span>
-                                    Jl. Kampus Teknologi Informasi, Indonesia
+                                    Jl. Kapten Suparman No. 39, Potrobangsan, Magelang Utara, Jawa Tengah 56116
                                 </span>
                             </div>
                         </div>
@@ -220,16 +234,20 @@
                 </div>
 
 
-                <div
+                <a
                     class="map"
-                    style="margin-top: 20px;"
+                    style="margin-top: 20px; display: block; text-decoration: none;"
+                    href="https://www.google.com/maps/search/?api=1&query=Jl.+Kapten+Suparman+No.+39+Potrobangsan+Magelang+Utara+Jawa+Tengah+56116"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka lokasi sekretariat HIMATIF di Google Maps"
                 >
                     <div>
                         <strong>Lokasi Sekretariat</strong>
                         <br>
-                        Sematkan Google Maps di sini jika alamat resmi sudah tersedia.
+                        Lihat alamat di Google Maps &rarr;
                     </div>
-                </div>
+                </a>
 
             </div>
 
@@ -428,6 +446,26 @@
       </svg>
     </a>
 
+    <script>
+      document.getElementById("feedback-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nama = document.getElementById("nama").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const kategori = document.getElementById("kategori").value;
+        const pesan = document.getElementById("pesan").value.trim();
+
+        const subject = encodeURIComponent("Feedback HIMATIF - " + kategori);
+        const body = encodeURIComponent(
+          "Nama: " + nama + "\n" +
+          "Email: " + email + "\n" +
+          "Kategori: " + kategori + "\n\n" +
+          "Pesan:\n" + pesan
+        );
+
+        window.location.href = "mailto:untidarhimatif@gmail.com?subject=" + subject + "&body=" + body;
+      });
+    </script>
 </body>
 </html>
 

@@ -3197,220 +3197,6 @@ textarea {
 
 
 /* =====================================================
-   DIVISI RESPONSIVE
-===================================================== */
-
-@media (max-width: 1024px) {
-    .divisi-grid {
-        gap: 20px;
-    }
-
-    .divisi-header {
-        padding: 20px 20px;
-    }
-
-    .divisi-name {
-        font-size: 22px;
-    }
-
-    .divisi-badge-block {
-        width: 120px;
-    }
-
-    .divisi-content-area {
-        padding: 20px 20px;
-    }
-
-    .member-name {
-        font-size: 19px;
-    }
-}
-
-@media (max-width: 900px) {
-    .divisi-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 18px;
-    }
-
-    .divisi-body {
-        flex-direction: column;
-
-        min-height: 0;
-    }
-
-    .divisi-badge-block {
-        width: 100%;
-
-        height: 190px;
-    }
-
-    .divisi-content-area {
-        flex: 1;
-
-        padding: 18px 18px 16px;
-    }
-
-    .divisi-slides-track {
-        min-height: 150px;
-    }
-
-    .divisi-nav {
-        margin-top: 16px;
-    }
-}
-
-@media (max-width: 600px) {
-    /* Tetap 2 Kolom, kartu diperkecil agar tetap rapi */
-    .divisi-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 10px;
-    }
-
-    .divisi-card {
-        border-radius: 14px;
-    }
-
-    .divisi-card:hover {
-        transform: none;
-    }
-
-    .divisi-header {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 8px;
-
-        padding: 12px 13px 13px;
-    }
-
-    .divisi-tag {
-        font-size: 9px;
-
-        margin-bottom: 3px;
-    }
-
-    .divisi-name {
-        font-size: 16px;
-
-        margin-bottom: 3px;
-    }
-
-    .divisi-desc {
-        display: -webkit-box;
-
-        -webkit-line-clamp: 2;
-
-        -webkit-box-orient: vertical;
-
-        overflow: hidden;
-
-        font-size: 10px;
-        line-height: 1.35;
-    }
-
-    .divisi-count {
-        font-size: 9px;
-
-        padding: 4px 9px;
-    }
-
-    .divisi-badge-block {
-        height: 130px;
-    }
-
-    .divisi-content-area {
-        padding: 13px 12px 14px;
-    }
-
-    .member-category {
-        font-size: 9px;
-
-        letter-spacing: .06em;
-
-        margin-bottom: 4px;
-    }
-
-    .member-name {
-        font-size: 14px;
-
-        margin-bottom: 6px;
-
-        overflow-wrap: anywhere;
-    }
-
-    .member-desc {
-        font-size: 11px;
-        line-height: 1.5;
-    }
-
-    .divisi-slides-track {
-        min-height: 205px;
-    }
-
-    .divisi-nav {
-        gap: 6px;
-
-        margin-top: 12px;
-
-        padding: 4px 2px 6px;
-    }
-
-    .divisi-nav-btn {
-        min-width: 34px;
-
-        height: 30px;
-
-        padding: 3px 7px;
-
-        font-size: 10px;
-    }
-}
-
-@media (max-width: 390px) {
-    .divisi-grid {
-        gap: 8px;
-    }
-
-    .divisi-header {
-        padding: 11px 11px 12px;
-    }
-
-    .divisi-badge-block {
-        height: 112px;
-    }
-
-    .divisi-content-area {
-        padding: 12px 10px 13px;
-    }
-
-    .member-name {
-        font-size: 13px;
-    }
-
-    .member-desc {
-        font-size: 10.5px;
-    }
-
-    .divisi-slides-track {
-        min-height: 215px;
-    }
-
-    .divisi-nav-btn {
-        min-width: 30px;
-
-        height: 28px;
-
-        padding: 3px 6px;
-    }
-}
-
-
-/* =====================================================
    TABS
 ===================================================== */
 
@@ -4470,7 +4256,8 @@ textarea {
     display: none;
   }
 
-  /* Team/Pengurus & Gallery Grid (2 Kolom) */
+  /* Divisi, Team/Pengurus, & Gallery Grid (2 Kolom) */
+  .divisi-grid,
   .team-grid,
   .gallery {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -4485,7 +4272,8 @@ textarea {
 
 /* Smartphone / HP Terkecil (Max Width: 600px & Ultra-Small) */
 @media (max-width: 600px) {
-  /* Tetap 2 Kolom untuk Kartu Pengurus */
+  /* Tetap 2 Kolom untuk Kartu Divisi & Pengurus */
+  .divisi-grid,
   .team-grid,
   .gallery,
   .info-grid {
@@ -4513,6 +4301,31 @@ textarea {
   .team-card p,
   .team-card .team-role {
     font-size: 11px !important;
+  }
+
+  /* Penyesuaian Kartu Divisi agar Muat 2 Kolom */
+  .divisi-card {
+    padding: 12px !important;
+    border-radius: 12px;
+  }
+
+  .divisi-body {
+    flex-direction: column !important;
+    gap: 8px;
+  }
+
+  .divisi-badge-block {
+    width: 100% !important;
+    height: 90px !important;
+  }
+
+  .divisi-card h3 {
+    font-size: 14px !important;
+  }
+
+  .divisi-card p {
+    font-size: 11px !important;
+    line-height: 1.3;
   }
 
   /* Penyesuaian Teks & Header */
