@@ -4214,3 +4214,137 @@ textarea {
 .information-note p{margin:0;color:#667085;font-size:13px;line-height:1.6}
 @media(max-width:900px){.information-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.information-card:last-child{grid-column:1/-1;max-width:calc(50% - 9px);margin-inline:auto}}
 @media(max-width:600px){.information-section{padding-top:38px;padding-bottom:52px}.information-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px;margin-bottom:26px;scrollbar-width:none}.information-tabs::-webkit-scrollbar{display:none}.information-tabs label{flex:0 0 auto;white-space:nowrap;padding-inline:17px}.information-panel-head{margin-bottom:22px;text-align:left}.section-description{margin-inline:0;font-size:13px}.information-cards{grid-template-columns:1fr;gap:16px}.information-card:last-child{grid-column:auto;max-width:none}.information-card .card-img{height:200px}.information-card .card-body{height:auto}.information-note{align-items:flex-start;margin-top:24px;padding:16px}}
+/* =========================================================
+   RESPONSIVE MOBILE & TABLET STYLES
+========================================================= */
+
+@media (max-width: 900px) {
+  /* Section Spacing & Grid Adjustments */
+  .section {
+    padding: 60px 0;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .visual-card {
+    order: -1;
+    max-width: 100%;
+  }
+
+  /* Page Hero Section Adjustments */
+  .page-hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height, 80px) + 30px);
+    padding-bottom: 50px;
+    text-align: center;
+  }
+
+  .page-hero .title::after {
+    margin: 18px auto 0;
+  }
+
+  .page-hero .lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-hero-logo {
+    display: none;
+  }
+
+  /* Info Grid (Prinsip & Nilai) */
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Cards & Mission Grids */
+  .mission-grid,
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Team & Gallery Grid */
+  .team-grid,
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .team-card {
+    height: 340px;
+  }
+
+  /* Divisi Grid */
+  .divisi-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .divisi-body {
+    flex-direction: column;
+  }
+
+  .divisi-badge-block {
+    width: 100%;
+    height: 140px;
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-head {
+    margin-bottom: 28px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .lead {
+    font-size: 14px;
+  }
+
+  .quote {
+    padding: 16px;
+    font-size: 13px;
+    border-left-width: 3px;
+  }
+
+  .team-grid,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer Adjustments */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand {
+    grid-column: span 1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
