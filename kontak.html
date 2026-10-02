@@ -2,784 +2,385 @@
 <html lang="id">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kontak — HIMATIF</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style aku.css">
-    <style>
-      /* =========================================================
-         RESPONSIVE & MOBILE STYLING UNTUK HALAMAN KONTAK
-      ========================================================== */
-      .contact-grid {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 30px;
-        align-items: start;
-      }
-
-      .contact-box {
-        padding: 36px 32px;
-        border: 1px solid var(--line, #e2e8f0);
-        border-radius: 20px;
-        background: #ffffff;
-        box-shadow: 0 10px 30px rgba(10, 17, 40, 0.05);
-        box-sizing: border-box;
-      }
-
-      .contact-box .eyebrow {
-        display: inline-block;
-        margin-bottom: 8px;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        font-size: 12px;
-        color: #314874;
-      }
-
-      .contact-box .title {
-        margin-bottom: 22px;
-        line-height: 1.25;
-      }
-
-      .fake-form {
-        display: grid;
-        gap: 18px;
-      }
-
-      .fake-form label {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        font-size: 13px;
-        font-weight: 600;
-        color: #131d3b;
-      }
-
-      .fake-form input,
-      .fake-form select,
-      .fake-form textarea {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        padding: 13px 16px !important;
-        font-size: 15px;
-        font-family: inherit;
-        border: 1px solid var(--line, #e2e8f0) !important;
-        border-radius: 12px !important;
-        background: #f8fafc;
-        color: #0f172a;
-        outline: none;
-        transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
-      }
-
-      .fake-form input:focus,
-      .fake-form select:focus,
-      .fake-form textarea:focus {
-        border-color: #314874 !important;
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(49, 72, 116, 0.15);
-      }
-
-      .fake-form button.btn {
-        width: 100%;
-        padding: 14px 24px;
-        font-size: 15px;
-        font-weight: 600;
-        border-radius: 12px;
-        cursor: pointer;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        box-sizing: border-box;
-      }
-
-      .form-note {
-        font-size: 12.5px;
-        line-height: 1.5;
-        color: var(--muted, #64748b);
-        margin-top: 4px;
-        text-align: center;
-      }
-
-      .contact-list {
-        display: grid;
-        gap: 14px;
-        margin-top: 18px;
-      }
-
-      .contact-box .contact-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 14px 16px;
-        border-radius: 14px;
-        background: #f8fafc;
-        border: 1px solid var(--line, #e2e8f0);
-        box-sizing: border-box;
-        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-      }
-
-      .contact-box .contact-item:hover {
-        background: #f1f5f9;
-        border-color: rgba(49, 72, 116, 0.25);
-        transform: translateY(-2px);
-      }
-
-      .contact-box .info-icon {
-        width: 42px;
-        height: 42px;
-        margin-bottom: 0 !important;
-        flex-shrink: 0;
-        border-radius: 10px;
-        background: rgba(49, 72, 116, 0.1);
-        color: #314874;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 15px;
-      }
-
-      .contact-box .contact-item b {
-        display: block;
-        font-size: 14px;
-        color: #0f172a;
-        margin-bottom: 2px;
-      }
-
-      .contact-box .contact-item span {
-        display: block;
-        font-size: 13.5px;
-        color: var(--muted, #64748b);
-        line-height: 1.45;
-        word-break: break-word;
-      }
-
-      .map {
-        margin-top: 20px;
-        display: block;
-        text-decoration: none;
-        background: linear-gradient(135deg, #0A1128 0%, #1e2e4f 100%);
-        color: #ffffff !important;
-        padding: 22px 24px;
-        border-radius: 18px;
-        box-shadow: 0 10px 25px rgba(10, 17, 40, 0.12);
-        box-sizing: border-box;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-
-      .map:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 14px 32px rgba(10, 17, 40, 0.22);
-      }
-
-      .map strong {
-        display: block;
-        font-size: 16px;
-        color: #ffffff;
-        margin-bottom: 4px;
-      }
-
-      .map span,
-      .map div {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 13.5px;
-        line-height: 1.5;
-      }
-
-      /* =========================================================
-         MEDIA QUERY: TABLET & LAPTOP KECIL (<= 900px)
-      ========================================================== */
-      @media (max-width: 900px) {
-        .contact-grid {
-          grid-template-columns: 1fr;
-          gap: 24px;
-        }
-
-        .page-hero-photo {
-          min-height: 380px;
-        }
-      }
-
-      /* =========================================================
-         MEDIA QUERY: SMARTPHONE (<= 600px)
-      ========================================================== */
-      @media (max-width: 600px) {
-        .page-hero-photo {
-          min-height: 320px;
-          padding-top: calc(var(--nav-height, 70px) + 20px);
-          padding-bottom: 32px;
-        }
-
-        .page-hero .breadcrumbs {
-          font-size: 12px;
-          margin-bottom: 10px;
-        }
-
-        .page-hero .title {
-          font-size: 26px !important;
-          line-height: 1.25;
-        }
-
-        .page-hero .lead {
-          font-size: 14px;
-          line-height: 1.55;
-        }
-
-        .section {
-          padding: 32px 0 44px;
-        }
-
-        .contact-box {
-          padding: 22px 16px;
-          border-radius: 16px;
-        }
-
-        .contact-box .title {
-          font-size: 22px !important;
-          margin-bottom: 18px;
-        }
-
-        .fake-form {
-          gap: 14px;
-        }
-
-        .fake-form label {
-          font-size: 12.5px;
-        }
-
-        /* 16px mencegah zooming otomatis di browser iPhone/Safari */
-        .fake-form input,
-        .fake-form select,
-        .fake-form textarea {
-          font-size: 16px !important;
-          padding: 12px 14px !important;
-        }
-
-        .fake-form button.btn {
-          padding: 13px 20px;
-          font-size: 14.5px;
-        }
-
-        .contact-list {
-          gap: 11px;
-          margin-top: 14px;
-        }
-
-        .contact-box .contact-item {
-          padding: 12px;
-          gap: 11px;
-          border-radius: 12px;
-        }
-
-        .contact-box .info-icon {
-          width: 38px;
-          height: 38px;
-          font-size: 13.5px;
-          border-radius: 8px;
-        }
-
-        .contact-box .contact-item b {
-          font-size: 13.5px;
-        }
-
-        .contact-box .contact-item span {
-          font-size: 12.5px;
-        }
-
-        .map {
-          margin-top: 16px;
-          padding: 18px 16px;
-          border-radius: 14px;
-        }
-
-        .map strong {
-          font-size: 15px;
-        }
-
-        .map span,
-        .map div {
-          font-size: 13px;
-        }
-      }
-
-      /* =========================================================
-         MEDIA QUERY: HP SANGAT KECIL (<= 380px)
-      ========================================================== */
-      @media (max-width: 380px) {
-        .contact-box {
-          padding: 18px 12px;
-        }
-
-        .contact-box .contact-item {
-          padding: 10px;
-          gap: 9px;
-        }
-
-        .contact-box .info-icon {
-          width: 34px;
-          height: 34px;
-          font-size: 12px;
-        }
-      }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontak — HIMATIF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style aku.css">
 </head>
 
 <body id="top">
 
-        <header class="navbar">
-      <div class="container nav-inner">
-        <a href="index.html" class="brand">
-          <span class="brand-logo">
-            <img
-              src="assets/img/LOGO HIMATIF.png"
-              alt="Logo HIMATIF"
-              width="40"
-              height="40"
-            />
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-logo">
+          <img src="assets/img/LOGO HIMATIF.png" alt="Logo HIMATIF" width="40" height="40" />
+        </span>
+
+        <span class="brand-text">
+          <strong>HIMATIF</strong>
+          <span>Nyalakan Asa Wujudkan Karya</span>
+        </span>
+      </a>
+
+      <!-- MOBILE MENU CHECKBOX -->
+      <input type="checkbox" class="mobile-toggle" id="mobile-menu" hidden />
+
+      <label for="mobile-menu" class="hamburger" aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </label>
+
+      <nav class="nav-menu">
+        <div class="dropdown">
+          <a href="index.html" class="nav-link">
+            Home
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </a>
+
+          <div class="dropdown-menu">
+            <a href="index.html#about">Tentang HIMATIF</a>
+            <a href="index.html#programs">Programs</a>
+            <a href="index.html#testimonials">Testimonials</a>
+            <a href="index.html#faq">FAQ</a>
+          </div>
+        </div>
+
+        <a href="profil.html" class="nav-link">Profile</a>
+        <a href="kepengurusan.html" class="nav-link">Kepengurusan</a>
+        <a href="dokumentasi.html" class="nav-link">Dokumentasi</a>
+        <a href="informasi.html" class="nav-link">Informasi</a>
+        <a href="kontak.html" class="nav-link contact active">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <section class="page-hero">
+    <div class="container">
+
+      <div class="breadcrumbs">
+        Beranda / Kontak
+      </div>
+
+      <h1 class="title">
+        Kontak & Feedback
+      </h1>
+
+      <p class="lead">
+        Sampaikan kritik, saran, aspirasi, atau pertanyaan kepada pengurus HIMATIF.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container contact-grid">
+
+      <div class="contact-box">
+
+        <span class="eyebrow">
+          Form Feedback
+        </span>
+
+        <h2 class="title" style="font-size: 30px;">
+          Kami ingin mendengar.
+        </h2>
+
+
+        <form class="fake-form" id="feedback-form">
+
+          <label>
+            Nama Lengkap
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama" autocomplete="name" required>
+          </label>
+
+
+          <label>
+            Alamat Email
+            <input type="email" id="email" name="email" placeholder="nama@email.com" autocomplete="email" required>
+          </label>
+
+
+          <label>
+            Kategori
+
+            <select id="kategori" name="kategori"
+              style="width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 12px;">
+              <option>Kritik & Saran</option>
+              <option>Aspirasi Mahasiswa</option>
+              <option>Kemitraan & Sponsor</option>
+              <option>Pertanyaan Umum</option>
+            </select>
+          </label>
+
+
+          <label>
+            Pesan
+
+            <textarea id="pesan" name="pesan" placeholder="Tuliskan pesan Anda di sini..." rows="5" required></textarea>
+          </label>
+
+
+          <button class="btn" type="submit">
+            Kirim melalui Email &rarr;
+          </button>
+          <p class="form-note" id="form-note" aria-live="polite">
+            Pesan akan disiapkan melalui aplikasi email di perangkat Anda.
+          </p>
+
+        </form>
+
+      </div>
+
+
+      <div>
+
+        <div class="contact-box">
+
+          <span class="eyebrow">
+            Sekretariat
           </span>
 
-          <span class="brand-text">
-            <strong>HIMATIF</strong>
-            <span>Nyalakan Asa Wujudkan Karya</span>
-          </span>
-        </a>
 
-        <!-- MOBILE MENU CHECKBOX -->
-        <input type="checkbox" class="mobile-toggle" id="mobile-menu" hidden />
+          <div class="contact-list">
 
-        <label for="mobile-menu" class="hamburger" aria-label="Buka menu">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        </label>
+            <div class="contact-item">
+              <div class="info-icon">@</div>
 
-        <nav class="nav-menu">
-          <div class="dropdown">
-            <a href="index.html" class="nav-link">
-              Home
-
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </a>
-
-            <div class="dropdown-menu">
-              <a href="index.html#about">Tentang HIMATIF</a>
-              <a href="index.html#programs">Programs</a>
-              <a href="index.html#testimonials">Testimonials</a>
-              <a href="index.html#faq">FAQ</a>
+              <div>
+                <b>Email</b>
+                <span>
+                  untidarhimatif@gmail.com
+                </span>
+              </div>
             </div>
+
+
+            <div class="contact-item">
+              <div class="info-icon">IG</div>
+
+              <div>
+                <b>Instagram</b>
+                <span>
+                  @himatif.untidar
+                </span>
+              </div>
+            </div>
+
+
+            <div class="contact-item">
+              <div class="info-icon" aria-hidden="true">⌖</div>
+
+              <div>
+                <b>Alamat</b>
+                <span>
+                  Jl. Kapten Suparman No. 39, Potrobangsan, Magelang Utara, Jawa Tengah 56116
+                </span>
+              </div>
+            </div>
+
           </div>
 
-          <a href="profil.html" class="nav-link">Profile</a>
-          <a href="kepengurusan.html" class="nav-link">Kepengurusan</a>
-          <a href="dokumentasi.html" class="nav-link">Dokumentasi</a>
-          <a href="informasi.html" class="nav-link">Informasi</a>
-          <a href="kontak.html" class="nav-link contact active">Kontak</a>
-        </nav>
+        </div>
+
+
+        <a class="map" style="margin-top: 20px; display: block; text-decoration: none;"
+          href="https://www.google.com/maps/search/?api=1&query=Jl.+Kapten+Suparman+No.+39+Potrobangsan+Magelang+Utara+Jawa+Tengah+56116"
+          target="_blank" rel="noopener noreferrer" aria-label="Buka lokasi sekretariat HIMATIF di Google Maps">
+          <div>
+            <strong>Lokasi Sekretariat</strong>
+            <br>
+            Lihat alamat di Google Maps &rarr;
+          </div>
+        </a>
+
       </div>
-    </header>
+
+    </div>
+  </section>
 
 
-    <section class="page-hero page-hero-photo" style="background-image: url('assets/img/HIMATIF Hero 01.jpg');">
-        <div class="container page-hero-inner">
-            <div class="page-hero-content">
-                <div class="breadcrumbs">
-                    Beranda <span>/</span> Kontak
-                </div>
-
-                <h1 class="title">
-                    Kontak & Feedback
-                </h1>
-
-                <p class="lead">
-                    Sampaikan kritik, saran, aspirasi, atau pertanyaan kepada pengurus HIMATIF.
-                </p>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="section">
-        <div class="container contact-grid">
-
-            <div class="contact-box">
-
-                <span class="eyebrow">
-                    Form Feedback
-                </span>
-
-                <h2 class="title" style="font-size: 30px;">
-                    Kami ingin mendengar.
-                </h2>
-
-
-                <form class="fake-form" id="feedback-form">
-
-                    <label>
-                        Nama Lengkap
-                        <input
-                            type="text"
-                            id="nama"
-                            name="nama"
-                            placeholder="Masukkan nama"
-                            autocomplete="name"
-                            required
-                        >
-                    </label>
-
-
-                    <label>
-                        Alamat Email
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="nama@email.com"
-                            autocomplete="email"
-                            required
-                        >
-                    </label>
-
-
-                    <label>
-                        Kategori
-
-                        <select
-                            id="kategori"
-                            name="kategori"
-                        >
-                            <option>Kritik & Saran</option>
-                            <option>Aspirasi Mahasiswa</option>
-                            <option>Kemitraan & Sponsor</option>
-                            <option>Pertanyaan Umum</option>
-                        </select>
-                    </label>
-
-
-                    <label>
-                        Pesan
-
-                        <textarea
-                            id="pesan"
-                            name="pesan"
-                            placeholder="Tuliskan pesan Anda di sini..."
-                            rows="5"
-                            required
-                        ></textarea>
-                    </label>
-
-
-                    <button class="btn" type="submit">
-                        Kirim melalui Email &rarr;
-                    </button>
-                    <p class="form-note" id="form-note" aria-live="polite">
-                        Pesan akan disiapkan melalui aplikasi email di perangkat Anda.
-                    </p>
-
-                </form>
-
-            </div>
-
-
-            <div>
-
-                <div class="contact-box">
-
-                    <span class="eyebrow">
-                        Sekretariat
-                    </span>
-
-
-                    <div class="contact-list">
-
-                        <div class="contact-item">
-                            <div class="info-icon">@</div>
-
-                            <div>
-                                <b>Email</b>
-                                <span>
-                                    untidarhimatif@gmail.com
-                                </span>
-                            </div>
-                        </div>
-
-
-                        <div class="contact-item">
-                            <div class="info-icon">IG</div>
-
-                            <div>
-                                <b>Instagram</b>
-                                <span>
-                                    @himatif.untidar
-                                </span>
-                            </div>
-                        </div>
-
-
-                        <div class="contact-item">
-                            <div class="info-icon" aria-hidden="true">⌖</div>
-
-                            <div>
-                                <b>Alamat</b>
-                                <span>
-                                    Jl. Kapten Suparman No. 39, Potrobangsan, Magelang Utara, Jawa Tengah 56116
-                                </span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <a
-                    class="map"
-                    href="https://www.google.com/maps/search/?api=1&query=Jl.+Kapten+Suparman+No.+39+Potrobangsan+Magelang+Utara+Jawa+Tengah+56116"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Buka lokasi sekretariat HIMATIF di Google Maps"
-                >
-                    <div>
-                        <strong>Lokasi Sekretariat</strong>
-                        <span>Lihat alamat di Google Maps &rarr;</span>
-                    </div>
-                </a>
-
-            </div>
-
-        </div>
-    </section>
-
-
-        <!-- =========================================================
+  <!-- =========================================================
          FOOTER
     ========================================================== -->
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <!-- Brand -->
-          <div class="footer-brand">
-            <a href="#top" class="brand">
-              <!-- GANTI DENGAN LOGO ASLI -->
-              <span class="brand-logo">
-                <img src="assets/img/LOGO HIMATIF.png" alt="" />
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="#top" class="brand">
+            <!-- GANTI DENGAN LOGO ASLI -->
+            <span class="brand-logo">
+              <img src="assets/img/LOGO HIMATIF.png" alt="" />
+            </span>
+
+            <span class="brand-text">
+              <strong>HIMATIF</strong>
+              <span>Nyalakan Asa Wujudkan Karya</span>
+            </span>
+          </a>
+
+          <p class="footer-description">
+            Himpunan Mahasiswa Teknologi Informasi Fakultas Teknik Universitas
+            Tidar — Tumbuh, berkarya, dan berdampak bersama.
+          </p>
+
+          <div class="footer-contact">
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 21s7-6.2 7-12A7 7 0 1 0 5 9c0 5.8 7 12 7 12Z" />
+                  <circle cx="12" cy="9" r="2.3" />
+                </svg>
               </span>
 
-              <span class="brand-text">
-                <strong>HIMATIF</strong>
-                <span>Nyalakan Asa Wujudkan Karya</span>
+              <div>
+                <small>ALAMAT</small>
+                <span>
+                  Jl. Kapten Suparman 39 Potrobangsan,Magelang Utara, Jawa
+                  Tengah 56116
+                </span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
               </span>
+
+              <div>
+                <small>EMAIL</small>
+                <span>untidarhimatif@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <div>
+          <h3 class="footer-title">MENU</h3>
+
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profil.html">Profile</a></li>
+            <li><a href="kepengurusan.html">Kepengurusan</a></li>
+            <li><a href="dokumentasi.html">Dokumentasi</a></li>
+            <li><a href="informasi.html">Informasi</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+
+        <!-- Informasi -->
+        <div>
+          <h3 class="footer-title">INFORMASI</h3>
+
+          <ul class="footer-links">
+            <li>
+              <a href="index.html#testimonials"> Testimonials </a>
+            </li>
+
+            <li>
+              <a href="index.html#faq"> FAQ </a>
+            </li>
+          </ul>
+
+          <h4 class="footer-subtitle">FOLLOW US</h4>
+
+          <div class="social-links">
+            <a href="https://www.instagram.com/himatif.untidar/" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
+              </svg>
             </a>
 
-            <p class="footer-description">
-              Himpunan Mahasiswa Teknologi Informasi Fakultas Teknik Universitas
-              Tidar — Tumbuh, berkarya, dan berdampak bersama.
-            </p>
+            <a href="https://www.linkedin.com/in/himatif-untidar/" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M5 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5ZM3 10h4v11H3V10Zm6 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.84 1.25-1.84 2.55V21H9V10Z" />
+              </svg>
+            </a>
 
-            <div class="footer-contact">
-              <div class="contact-item">
-                <span class="contact-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <path
-                      d="M12 21s7-6.2 7-12A7 7 0 1 0 5 9c0 5.8 7 12 7 12Z"
-                    />
-                    <circle cx="12" cy="9" r="2.3" />
-                  </svg>
-                </span>
-
-                <div>
-                  <small>ALAMAT</small>
-                  <span>
-                    Jl. Kapten Suparman 39 Potrobangsan,Magelang Utara, Jawa
-                    Tengah 56116
-                  </span>
-                </div>
-              </div>
-
-              <div class="contact-item">
-                <span class="contact-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <path d="m4 7 8 6 8-6" />
-                  </svg>
-                </span>
-
-                <div>
-                  <small>EMAIL</small>
-                  <span>untidarhimatif@gmail.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Menu -->
-          <div>
-            <h3 class="footer-title">MENU</h3>
-
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="profil.html">Profile</a></li>
-              <li><a href="kepengurusan.html">Kepengurusan</a></li>
-              <li><a href="dokumentasi.html">Dokumentasi</a></li>
-              <li><a href="informasi.html">Informasi</a></li>
-              <li><a href="kontak.html">Kontak</a></li>
-            </ul>
-          </div>
-
-          <!-- Informasi -->
-          <div>
-            <h3 class="footer-title">INFORMASI</h3>
-
-            <ul class="footer-links">
-              <li>
-                <a href="index.html#testimonials"> Testimonials </a>
-              </li>
-
-              <li>
-                <a href="index.html#faq"> FAQ </a>
-              </li>
-            </ul>
-
-            <h4 class="footer-subtitle">FOLLOW US</h4>
-
-            <div class="social-links">
-              <a
-                href="https://www.instagram.com/himatif.untidar/"
-                class="social-link"
-                aria-label="Instagram"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
-                </svg>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/himatif-untidar/"
-                class="social-link"
-                aria-label="LinkedIn"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M5 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5ZM3 10h4v11H3V10Zm6 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.84 1.25-1.84 2.55V21H9V10Z"
-                  />
-                </svg>
-              </a>
-
-              <a
-                href="https://www.tiktok.com/@untidarhimatif"
-                class="social-link"
-                aria-label="TikTok"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path
-                    d="M19.6 7.2a5.8 5.8 0 0 1-3.5-1.1A5.9 5.9 0 0 1 14.7 2h-3.2v13.3a2.7 2.7 0 1 1-1.9-2.6v-3.3a6 6 0 1 0 5.1 5.9V8.5a9 9 0 0 0 5.3 1.7V7a5.8 5.8 0 0 1-.4 0Z"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://www.youtube.com/@HIMATIFUNTIDAR"
-                class="social-link"
-                aria-label="YouTube"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path
-                    d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.6 15.7V8.3l6.5 3.7-6.5 3.7Z"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Additional column -->
-          <div>
-            <h3 class="footer-title">HIMATIF</h3>
-
-            <p class="footer-description">
-              Membangun ekosistem mahasiswa Teknologi Informasi yang
-              kolaboratif, inovatif, dan berdaya saing.
-            </p>
+            <a href="https://www.tiktok.com/@untidarhimatif" class="social-link" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M19.6 7.2a5.8 5.8 0 0 1-3.5-1.1A5.9 5.9 0 0 1 14.7 2h-3.2v13.3a2.7 2.7 0 1 1-1.9-2.6v-3.3a6 6 0 1 0 5.1 5.9V8.5a9 9 0 0 0 5.3 1.7V7a5.8 5.8 0 0 1-.4 0Z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@HIMATIFUNTIDAR" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.6 15.7V8.3l6.5 3.7-6.5 3.7Z" />
+              </svg>
+            </a>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <span> © 2026 HIMATIF. All rights reserved. </span>
+        <!-- Additional column -->
+        <div>
+          <h3 class="footer-title">HIMATIF</h3>
 
-          <span> Built with ❤️ by Float Teams. </span>
+          <p class="footer-description">
+            Membangun ekosistem mahasiswa Teknologi Informasi yang
+            kolaboratif, inovatif, dan berdaya saing.
+          </p>
         </div>
       </div>
-    </footer>
 
-    <!-- =========================================================
+      <div class="footer-bottom">
+        <span> © 2026 HIMATIF. All rights reserved. </span>
+
+        <span> Built with ❤️ by Float Teams. </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
          BACK TO TOP
     ========================================================== -->
 
-    <a href="#top" class="back-top" aria-label="Kembali ke atas">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path d="M12 19V5M6 11l6-6 6 6" />
-      </svg>
-    </a>
+  <a href="#top" class="back-top" aria-label="Kembali ke atas">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M6 11l6-6 6 6" />
+    </svg>
+  </a>
 
-    <script>
-      document.getElementById("feedback-form").addEventListener("submit", function (event) {
-        event.preventDefault();
+  <script>
+    document.getElementById("feedback-form").addEventListener("submit", function (event) {
+      event.preventDefault();
 
-        const nama = document.getElementById("nama").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const kategori = document.getElementById("kategori").value;
-        const pesan = document.getElementById("pesan").value.trim();
+      const nama = document.getElementById("nama").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const kategori = document.getElementById("kategori").value;
+      const pesan = document.getElementById("pesan").value.trim();
 
-        const subject = encodeURIComponent("Feedback HIMATIF - " + kategori);
-        const body = encodeURIComponent(
-          "Nama: " + nama + "\n" +
-          "Email: " + email + "\n" +
-          "Kategori: " + kategori + "\n\n" +
-          "Pesan:\n" + pesan
-        );
+      const subject = encodeURIComponent("Feedback HIMATIF - " + kategori);
+      const body = encodeURIComponent(
+        "Nama: " + nama + "\n" +
+        "Email: " + email + "\n" +
+        "Kategori: " + kategori + "\n\n" +
+        "Pesan:\n" + pesan
+      );
 
-        window.location.href = "mailto:untidarhimatif@gmail.com?subject=" + subject + "&body=" + body;
-      });
-    </script>
+      window.location.href = "mailto:untidarhimatif@gmail.com?subject=" + subject + "&body=" + body;
+    });
+  </script>
 </body>
-</html>
 
+</html>
