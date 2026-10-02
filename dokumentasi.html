@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Dokumentasi — HIMATIF</title>
 
@@ -14,278 +12,286 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style aku.css">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="64x64" />
+    <link rel="stylesheet" href="style aku.css" />
 
-<style>
-/* =========================================================
+    <style>
+      /* =========================================================
    DOKUMENTASI — layout rapi + modal
    Pure CSS, tanpa JavaScript
    ========================================================= */
 
-/* ---------- Sembunyikan radio filter ---------- */
-.documentation-section > .container > input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
+      /* ---------- Sembunyikan radio filter ---------- */
+      .documentation-section > .container > input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
 
-/* ---------- Section ---------- */
-.documentation-section {
-    padding: clamp(40px, 5vw, 64px) 0 clamp(48px, 6vw, 76px);
-}
+      /* ---------- Section ---------- */
+      .documentation-section {
+        padding: clamp(40px, 5vw, 64px) 0 clamp(48px, 6vw, 76px);
+      }
 
-/* ---------- Toolbar: search + count ---------- */
-.documentation-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    margin-bottom: 20px;
-}
-
-.documentation-search {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: min(420px, 100%);
-    min-height: 48px;
-    padding: 0 16px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(20, 42, 76, .05);
-    transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.documentation-search:focus-within {
-    border-color: rgba(49, 72, 116, .45);
-    box-shadow: 0 0 0 4px rgba(49, 72, 116, .1);
-}
-
-.documentation-search svg {
-    width: 19px;
-    height: 19px;
-    flex: 0 0 auto;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    color: var(--muted);
-}
-
-.documentation-search input {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    font: inherit;
-    font-size: 14px;
-    color: var(--text);
-}
-
-.documentation-search input::placeholder {
-    color: #8a94a6;
-}
-
-.documentation-count {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--muted);
-    white-space: nowrap;
-}
-
-/* Jumlah ikut filter yang aktif */
-.documentation-count .count {
-    display: none;
-}
-
-#doc-all:checked ~ .documentation-toolbar .count-all,
-#doc-program:checked ~ .documentation-toolbar .count-program,
-#doc-kegiatan:checked ~ .documentation-toolbar .count-kegiatan {
-    display: inline;
-}
-
-/* ---------- Tab filter ---------- */
-.documentation-tabs {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 26px;
-}
-
-.documentation-tabs label {
-    display: inline-flex;
-    align-items: center;
-    min-height: 42px;
-    padding: 0 18px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: #fff;
-    color: rgba(10, 17, 40, .68);
-    font-size: 13px;
-    font-weight: 700;
-    white-space: nowrap;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(20, 42, 76, .03);
-    transition: .25s ease;
-}
-
-.documentation-tabs label:hover {
-    transform: translateY(-2px);
-    border-color: var(--navy);
-}
-
-#doc-all:checked ~ .documentation-tabs label[for="doc-all"],
-#doc-program:checked ~ .documentation-tabs label[for="doc-program"],
-#doc-kegiatan:checked ~ .documentation-tabs label[for="doc-kegiatan"] {
-    background: var(--navy);
-    border-color: var(--navy);
-    color: #fff;
-}
-
-/* ---------- Gallery ---------- */
-.documentation-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
-}
-
-.documentation-gallery .doc-card {
-    min-height: 0;
-    aspect-ratio: 1.3 / 1;
-    animation: docFade .35s ease;
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.documentation-gallery .doc-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 45px rgba(30, 46, 79, .18);
-}
-
-.documentation-gallery .gallery-info p {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* Cincin fokus keyboard pada kartu */
-.documentation-gallery .doc-card:has(.modal-toggle:focus-visible) {
-    outline: 3px solid var(--blue);
-    outline-offset: 3px;
-}
-
-/* Sembunyikan kartu sesuai filter */
-#doc-program:checked ~ .documentation-gallery .doc-card.kegiatan,
-#doc-kegiatan:checked ~ .documentation-gallery .doc-card.program {
-    display: none;
-}
-
-@keyframes docFade {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------- Toggle modal (checkbox di dalam kartu) ---------- */
-.modal-toggle {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    width: 1px;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    opacity: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-/* ---------- Modal: buka / tutup ---------- */
-body:has(#t-workshop:checked) #modal-workshop,
-body:has(#t-seminar:checked) #modal-seminar,
-body:has(#t-sosial:checked) #modal-sosial,
-body:has(#t-gathering:checked) #modal-gathering,
-body:has(#t-rapat:checked) #modal-rapat,
-body:has(#t-kompetisi:checked) #modal-kompetisi {
-    display: flex;
-}
-
-/* Kunci scroll background saat modal terbuka */
-html {
-    scrollbar-gutter: stable;
-}
-
-html:has(.modal-toggle:checked),
-body:has(.modal-toggle:checked) {
-    overflow: hidden;
-}
-
-.modal-backdrop {
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-}
-
-.modal-box {
-    z-index: 1;
-}
-
-.modal-close {
-    cursor: pointer;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 1024px) {
-    .documentation-gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      /* ---------- Toolbar: search + count ---------- */
+      .documentation-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         gap: 18px;
-    }
-}
-
-@media (max-width: 640px) {
-    .documentation-section {
-        padding-top: 34px;
-        padding-bottom: 54px;
-    }
-
-    .documentation-toolbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        margin-bottom: 16px;
-    }
-
-    .documentation-search {
-        width: 100%;
-    }
-
-    .documentation-tabs {
         margin-bottom: 20px;
-    }
+      }
 
-    .documentation-tabs label {
-        min-height: 40px;
-        padding-inline: 16px;
-    }
+      .documentation-search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: min(420px, 100%);
+        min-height: 48px;
+        padding: 0 16px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 6px 20px rgba(20, 42, 76, 0.05);
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
 
-    .documentation-gallery {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+      .documentation-search:focus-within {
+        border-color: rgba(49, 72, 116, 0.45);
+        box-shadow: 0 0 0 4px rgba(49, 72, 116, 0.1);
+      }
 
-    .documentation-gallery .doc-card {
-        aspect-ratio: 1.5 / 1;
-        border-radius: 17px;
-    }
-}
-</style>
+      .documentation-search svg {
+        width: 19px;
+        height: 19px;
+        flex: 0 0 auto;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        color: var(--muted);
+      }
 
-</head>
+      .documentation-search input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        font: inherit;
+        font-size: 14px;
+        color: var(--text);
+      }
 
-<body id="top">
+      .documentation-search input::placeholder {
+        color: #8a94a6;
+      }
 
+      .documentation-count {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        white-space: nowrap;
+      }
 
+      /* Jumlah ikut filter yang aktif */
+      .documentation-count .count {
+        display: none;
+      }
+
+      #doc-all:checked ~ .documentation-toolbar .count-all,
+      #doc-program:checked ~ .documentation-toolbar .count-program,
+      #doc-kegiatan:checked ~ .documentation-toolbar .count-kegiatan {
+        display: inline;
+      }
+
+      /* ---------- Tab filter ---------- */
+      .documentation-tabs {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 26px;
+      }
+
+      .documentation-tabs label {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: rgba(10, 17, 40, 0.68);
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(20, 42, 76, 0.03);
+        transition: 0.25s ease;
+      }
+
+      .documentation-tabs label:hover {
+        transform: translateY(-2px);
+        border-color: var(--navy);
+      }
+
+      #doc-all:checked ~ .documentation-tabs label[for="doc-all"],
+      #doc-program:checked ~ .documentation-tabs label[for="doc-program"],
+      #doc-kegiatan:checked ~ .documentation-tabs label[for="doc-kegiatan"] {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: #fff;
+      }
+
+      /* ---------- Gallery ---------- */
+      .documentation-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .documentation-gallery .doc-card {
+        min-height: 0;
+        aspect-ratio: 1.3 / 1;
+        animation: docFade 0.35s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .documentation-gallery .doc-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(30, 46, 79, 0.18);
+      }
+
+      .documentation-gallery .gallery-info p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Cincin fokus keyboard pada kartu */
+      .documentation-gallery .doc-card:has(.modal-toggle:focus-visible) {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+      }
+
+      /* Sembunyikan kartu sesuai filter */
+      #doc-program:checked ~ .documentation-gallery .doc-card.kegiatan,
+      #doc-kegiatan:checked ~ .documentation-gallery .doc-card.program {
+        display: none;
+      }
+
+      @keyframes docFade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ---------- Toggle modal (checkbox di dalam kartu) ---------- */
+      .modal-toggle {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 1px;
+        height: 1px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      /* ---------- Modal: buka / tutup ---------- */
+      body:has(#t-workshop:checked) #modal-workshop,
+      body:has(#t-seminar:checked) #modal-seminar,
+      body:has(#t-sosial:checked) #modal-sosial,
+      body:has(#t-gathering:checked) #modal-gathering,
+      body:has(#t-rapat:checked) #modal-rapat,
+      body:has(#t-kompetisi:checked) #modal-kompetisi {
+        display: flex;
+      }
+
+      /* Kunci scroll background saat modal terbuka */
+      html {
+        scrollbar-gutter: stable;
+      }
+
+      html:has(.modal-toggle:checked),
+      body:has(.modal-toggle:checked) {
+        overflow: hidden;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+      }
+
+      .modal-box {
+        z-index: 1;
+      }
+
+      .modal-close {
+        cursor: pointer;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 1024px) {
+        .documentation-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .documentation-section {
+          padding-top: 34px;
+          padding-bottom: 54px;
+        }
+
+        .documentation-toolbar {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+
+        .documentation-search {
+          width: 100%;
+        }
+
+        .documentation-tabs {
+          margin-bottom: 20px;
+        }
+
+        .documentation-tabs label {
+          min-height: 40px;
+          padding-inline: 16px;
+        }
+
+        .documentation-gallery {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .documentation-gallery .doc-card {
+          aspect-ratio: 1.5 / 1;
+          border-radius: 17px;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="top">
     <header class="navbar">
       <div class="container nav-inner">
         <a href="index.html" class="brand">
@@ -350,492 +356,480 @@ body:has(.modal-toggle:checked) {
       </div>
     </header>
 
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs">Beranda / Dokumentasi</div>
 
-<section class="page-hero">
-
-    <div class="container">
-
-        <div class="breadcrumbs">
-            Beranda / Dokumentasi
-        </div>
-
-        <h1 class="title">
-            Dokumentasi HIMATIF
-        </h1>
+        <h1 class="title">Dokumentasi HIMATIF</h1>
 
         <p class="lead">
-            Arsip visual program kerja dan kegiatan
-            HIMATIF. Klik kartu untuk melihat detail.
+          Arsip visual program kerja dan kegiatan HIMATIF. Klik kartu untuk
+          melihat detail.
         </p>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<section class="section documentation-section">
-    <div class="container">
-
+    <section class="section documentation-section">
+      <div class="container">
         <!-- PURE CSS FILTER -->
-        <input type="radio" name="doc-filter" id="doc-all" checked>
-        <input type="radio" name="doc-filter" id="doc-program">
-        <input type="radio" name="doc-filter" id="doc-kegiatan">
+        <input type="radio" name="doc-filter" id="doc-all" checked />
+        <input type="radio" name="doc-filter" id="doc-program" />
+        <input type="radio" name="doc-filter" id="doc-kegiatan" />
 
         <div class="documentation-toolbar">
-            <div class="documentation-search">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="11" cy="11" r="7"></circle>
-                    <path d="m20 20-4-4"></path>
-                </svg>
-                <input type="search" placeholder="Cari dokumentasi..." aria-label="Cari dokumentasi">
-            </div>
+          <div class="documentation-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+            <input
+              type="search"
+              placeholder="Cari dokumentasi..."
+              aria-label="Cari dokumentasi"
+            />
+          </div>
 
-            <div class="documentation-count">
-                <span class="count count-all">6 dokumentasi</span>
-                <span class="count count-program">3 dokumentasi</span>
-                <span class="count count-kegiatan">3 dokumentasi</span>
-            </div>
+          <div class="documentation-count">
+            <span class="count count-all">6 dokumentasi</span>
+            <span class="count count-program">3 dokumentasi</span>
+            <span class="count count-kegiatan">3 dokumentasi</span>
+          </div>
         </div>
 
         <div class="documentation-tabs">
-            <label for="doc-all">Semua</label>
-            <label for="doc-program">Program Kerja</label>
-            <label for="doc-kegiatan">Kegiatan</label>
+          <label for="doc-all">Semua</label>
+          <label for="doc-program">Program Kerja</label>
+          <label for="doc-kegiatan">Kegiatan</label>
         </div>
 
         <div class="documentation-gallery">
+          <label class="gallery-card doc-card program">
+            <input type="checkbox" class="modal-toggle" id="t-workshop" />
+            <img src="assets/img/Workshop.JPG" alt="Workshop teknologi" />
+            <div class="gallery-info">
+              <span class="tag">PROGRAM KERJA</span>
+              <h3>Workshop Teknologi</h3>
+              <p>Pelatihan dan berbagi pengetahuan.</p>
+            </div>
+          </label>
 
-            <label class="gallery-card doc-card program">
-                <input type="checkbox" class="modal-toggle" id="t-workshop">
-                <img src="assets/img/Workshop.JPG" alt="Workshop teknologi">
-                <div class="gallery-info">
-                    <span class="tag">PROGRAM KERJA</span>
-                    <h3>Workshop Teknologi</h3>
-                    <p>Pelatihan dan berbagi pengetahuan.</p>
-                </div>
-            </label>
+          <label class="gallery-card doc-card kegiatan">
+            <input type="checkbox" class="modal-toggle" id="t-seminar" />
+            <img
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+              alt="Seminar mahasiswa"
+            />
+            <div class="gallery-info">
+              <span class="tag">KEGIATAN</span>
+              <h3>Seminar &amp; Sharing</h3>
+              <p>Forum belajar dan diskusi mahasiswa.</p>
+            </div>
+          </label>
 
-            <label class="gallery-card doc-card kegiatan">
-                <input type="checkbox" class="modal-toggle" id="t-seminar">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Seminar mahasiswa">
-                <div class="gallery-info">
-                    <span class="tag">KEGIATAN</span>
-                    <h3>Seminar &amp; Sharing</h3>
-                    <p>Forum belajar dan diskusi mahasiswa.</p>
-                </div>
-            </label>
+          <label class="gallery-card doc-card kegiatan">
+            <input type="checkbox" class="modal-toggle" id="t-sosial" />
+            <img
+              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+              alt="Kegiatan sosial"
+            />
+            <div class="gallery-info">
+              <span class="tag">KEGIATAN</span>
+              <h3>Aksi Sosial</h3>
+              <p>Kegiatan kontribusi kepada masyarakat.</p>
+            </div>
+          </label>
 
-            <label class="gallery-card doc-card kegiatan">
-                <input type="checkbox" class="modal-toggle" id="t-sosial">
-                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Kegiatan sosial">
-                <div class="gallery-info">
-                    <span class="tag">KEGIATAN</span>
-                    <h3>Aksi Sosial</h3>
-                    <p>Kegiatan kontribusi kepada masyarakat.</p>
-                </div>
-            </label>
+          <label class="gallery-card doc-card program">
+            <input type="checkbox" class="modal-toggle" id="t-gathering" />
+            <img
+              src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+              alt="Campus gathering"
+            />
+            <div class="gallery-info">
+              <span class="tag">PROGRAM KERJA</span>
+              <h3>Campus Gathering</h3>
+              <p>Membangun kedekatan antar mahasiswa.</p>
+            </div>
+          </label>
 
-            <label class="gallery-card doc-card program">
-                <input type="checkbox" class="modal-toggle" id="t-gathering">
-                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Campus gathering">
-                <div class="gallery-info">
-                    <span class="tag">PROGRAM KERJA</span>
-                    <h3>Campus Gathering</h3>
-                    <p>Membangun kedekatan antar mahasiswa.</p>
-                </div>
-            </label>
+          <label class="gallery-card doc-card kegiatan">
+            <input type="checkbox" class="modal-toggle" id="t-rapat" />
+            <img
+              src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+              alt="Rapat organisasi"
+            />
+            <div class="gallery-info">
+              <span class="tag">KEGIATAN</span>
+              <h3>Rapat &amp; Evaluasi</h3>
+              <p>Koordinasi dan evaluasi program.</p>
+            </div>
+          </label>
 
-            <label class="gallery-card doc-card kegiatan">
-                <input type="checkbox" class="modal-toggle" id="t-rapat">
-                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Rapat organisasi">
-                <div class="gallery-info">
-                    <span class="tag">KEGIATAN</span>
-                    <h3>Rapat &amp; Evaluasi</h3>
-                    <p>Koordinasi dan evaluasi program.</p>
-                </div>
-            </label>
-
-            <label class="gallery-card doc-card program">
-                <input type="checkbox" class="modal-toggle" id="t-kompetisi">
-                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Kompetisi teknologi">
-                <div class="gallery-info">
-                    <span class="tag">PROGRAM KERJA</span>
-                    <h3>Kompetisi Teknologi</h3>
-                    <p>Ruang unjuk karya dan prestasi.</p>
-                </div>
-            </label>
-
+          <label class="gallery-card doc-card program">
+            <input type="checkbox" class="modal-toggle" id="t-kompetisi" />
+            <img
+              src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+              alt="Kompetisi teknologi"
+            />
+            <div class="gallery-info">
+              <span class="tag">PROGRAM KERJA</span>
+              <h3>Kompetisi Teknologi</h3>
+              <p>Ruang unjuk karya dan prestasi.</p>
+            </div>
+          </label>
         </div>
+      </div>
+    </section>
 
-    </div>
-</section>
-
-
-<!-- =========================
+    <!-- =========================
      MODAL WORKSHOP
 ========================= -->
 
-<div id="modal-workshop" class="modal">
+    <div id="modal-workshop" class="modal">
+      <label for="t-workshop" class="modal-backdrop" aria-label="Tutup"></label>
 
-    <label for="t-workshop" class="modal-backdrop" aria-label="Tutup"></label>
-
-    <div class="modal-box">
-
+      <div class="modal-box">
         <label for="t-workshop" class="modal-close" aria-label="Tutup"></label>
 
         <div class="modal-gallery">
+          <input type="radio" name="workshop" id="workshop-1" checked />
+          <input type="radio" name="workshop" id="workshop-2" />
+          <input type="radio" name="workshop" id="workshop-3" />
 
-            <input type="radio" name="workshop" id="workshop-1" checked>
-            <input type="radio" name="workshop" id="workshop-2">
-            <input type="radio" name="workshop" id="workshop-3">
-
-            <div class="modal-track">
-
-                <div class="modal-slide">
-                    <img src="assets/img/Workshop.JPG" alt="Workshop">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Pelatihan">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Diskusi">
-                </div>
-
+          <div class="modal-track">
+            <div class="modal-slide">
+              <img src="assets/img/Workshop.JPG" alt="Workshop" />
             </div>
 
-            <div class="modal-nav">
-                <label for="workshop-1"></label>
-                <label for="workshop-2"></label>
-                <label for="workshop-3"></label>
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Pelatihan"
+              />
             </div>
 
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Diskusi"
+              />
+            </div>
+          </div>
+
+          <div class="modal-nav">
+            <label for="workshop-1"></label>
+            <label for="workshop-2"></label>
+            <label for="workshop-3"></label>
+          </div>
         </div>
 
         <div class="modal-content">
+          <span class="tag">PROGRAM KERJA</span>
 
-            <span class="tag">PROGRAM KERJA</span>
+          <h2>Workshop Teknologi</h2>
 
-            <h2>Workshop Teknologi</h2>
-
-            <p>
-                Program pengembangan kemampuan mahasiswa
-                melalui workshop, praktik, dan diskusi
-                bersama.
-            </p>
-
+          <p>
+            Program pengembangan kemampuan mahasiswa melalui workshop, praktik,
+            dan diskusi bersama.
+          </p>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-
-<!-- =========================
+    <!-- =========================
      MODAL SEMINAR
 ========================= -->
 
-<div id="modal-seminar" class="modal">
+    <div id="modal-seminar" class="modal">
+      <label for="t-seminar" class="modal-backdrop" aria-label="Tutup"></label>
 
-    <label for="t-seminar" class="modal-backdrop" aria-label="Tutup"></label>
-
-    <div class="modal-box">
-
+      <div class="modal-box">
         <label for="t-seminar" class="modal-close" aria-label="Tutup"></label>
 
         <div class="modal-gallery">
+          <input type="radio" name="seminar" id="seminar-1" checked />
+          <input type="radio" name="seminar" id="seminar-2" />
+          <input type="radio" name="seminar" id="seminar-3" />
 
-            <input type="radio" name="seminar" id="seminar-1" checked>
-            <input type="radio" name="seminar" id="seminar-2">
-            <input type="radio" name="seminar" id="seminar-3">
-
-            <div class="modal-track">
-
-                <div class="modal-slide">
-                    <img src="assets/img/Sosialisasi Gemastik.png" alt="Seminar">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Seminar kedua">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Diskusi">
-                </div>
-
+          <div class="modal-track">
+            <div class="modal-slide">
+              <img src="assets/img/Sosialisasi Gemastik.png" alt="Seminar" />
             </div>
 
-            <div class="modal-nav">
-                <label for="seminar-1"></label>
-                <label for="seminar-2"></label>
-                <label for="seminar-3"></label>
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Seminar kedua"
+              />
             </div>
 
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Diskusi"
+              />
+            </div>
+          </div>
+
+          <div class="modal-nav">
+            <label for="seminar-1"></label>
+            <label for="seminar-2"></label>
+            <label for="seminar-3"></label>
+          </div>
         </div>
 
         <div class="modal-content">
+          <span class="tag">KEGIATAN</span>
 
-            <span class="tag">KEGIATAN</span>
+          <h2>Seminar &amp; Sharing</h2>
 
-            <h2>Seminar &amp; Sharing</h2>
-
-            <p>
-                Forum berbagi pengalaman dan wawasan
-                untuk memperluas perspektif mahasiswa
-                Teknologi Informasi.
-            </p>
-
+          <p>
+            Forum berbagi pengalaman dan wawasan untuk memperluas perspektif
+            mahasiswa Teknologi Informasi.
+          </p>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-
-<!-- =========================
+    <!-- =========================
      MODAL SOSIAL
 ========================= -->
 
-<div id="modal-sosial" class="modal">
+    <div id="modal-sosial" class="modal">
+      <label for="t-sosial" class="modal-backdrop" aria-label="Tutup"></label>
 
-    <label for="t-sosial" class="modal-backdrop" aria-label="Tutup"></label>
-
-    <div class="modal-box">
-
+      <div class="modal-box">
         <label for="t-sosial" class="modal-close" aria-label="Tutup"></label>
 
         <div class="modal-gallery">
+          <input type="radio" name="sosial" id="sosial-1" checked />
+          <input type="radio" name="sosial" id="sosial-2" />
+          <input type="radio" name="sosial" id="sosial-3" />
 
-            <input type="radio" name="sosial" id="sosial-1" checked>
-            <input type="radio" name="sosial" id="sosial-2">
-            <input type="radio" name="sosial" id="sosial-3">
-
-            <div class="modal-track">
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Aksi sosial">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Kegiatan sosial">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Relawan">
-                </div>
-
+          <div class="modal-track">
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Aksi sosial"
+              />
             </div>
 
-            <div class="modal-nav">
-                <label for="sosial-1"></label>
-                <label for="sosial-2"></label>
-                <label for="sosial-3"></label>
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Kegiatan sosial"
+              />
             </div>
 
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Relawan"
+              />
+            </div>
+          </div>
+
+          <div class="modal-nav">
+            <label for="sosial-1"></label>
+            <label for="sosial-2"></label>
+            <label for="sosial-3"></label>
+          </div>
         </div>
 
         <div class="modal-content">
+          <span class="tag">KEGIATAN</span>
 
-            <span class="tag">KEGIATAN</span>
+          <h2>Aksi Sosial</h2>
 
-            <h2>Aksi Sosial</h2>
-
-            <p>
-                Kegiatan sosial yang mengajak mahasiswa
-                berkontribusi melalui edukasi, bantuan,
-                dan interaksi dengan masyarakat.
-            </p>
-
+          <p>
+            Kegiatan sosial yang mengajak mahasiswa berkontribusi melalui
+            edukasi, bantuan, dan interaksi dengan masyarakat.
+          </p>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-
-<!-- =========================
+    <!-- =========================
      MODAL GATHERING
 ========================= -->
 
-<div id="modal-gathering" class="modal">
+    <div id="modal-gathering" class="modal">
+      <label
+        for="t-gathering"
+        class="modal-backdrop"
+        aria-label="Tutup"
+      ></label>
 
-    <label for="t-gathering" class="modal-backdrop" aria-label="Tutup"></label>
-
-    <div class="modal-box">
-
+      <div class="modal-box">
         <label for="t-gathering" class="modal-close" aria-label="Tutup"></label>
 
         <div class="modal-gallery">
+          <input type="radio" name="gathering" id="gathering-1" checked />
+          <input type="radio" name="gathering" id="gathering-2" />
+          <input type="radio" name="gathering" id="gathering-3" />
 
-            <input type="radio" name="gathering" id="gathering-1" checked>
-            <input type="radio" name="gathering" id="gathering-2">
-            <input type="radio" name="gathering" id="gathering-3">
-
-            <div class="modal-track">
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Campus gathering">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Kebersamaan mahasiswa">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Kegiatan bersama">
-                </div>
-
+          <div class="modal-track">
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Campus gathering"
+              />
             </div>
 
-            <div class="modal-nav">
-                <label for="gathering-1"></label>
-                <label for="gathering-2"></label>
-                <label for="gathering-3"></label>
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Kebersamaan mahasiswa"
+              />
             </div>
 
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Kegiatan bersama"
+              />
+            </div>
+          </div>
+
+          <div class="modal-nav">
+            <label for="gathering-1"></label>
+            <label for="gathering-2"></label>
+            <label for="gathering-3"></label>
+          </div>
         </div>
 
         <div class="modal-content">
+          <span class="tag">PROGRAM KERJA</span>
 
-            <span class="tag">PROGRAM KERJA</span>
+          <h2>Campus Gathering</h2>
 
-            <h2>Campus Gathering</h2>
-
-            <p>
-                Kegiatan santai mempererat silaturahmi
-                antarmahasiswa Teknologi Informasi melalui
-                permainan dan sesi kebersamaan.
-            </p>
-
+          <p>
+            Kegiatan santai mempererat silaturahmi antarmahasiswa Teknologi
+            Informasi melalui permainan dan sesi kebersamaan.
+          </p>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-
-<!-- =========================
+    <!-- =========================
      MODAL RAPAT
 ========================= -->
 
-<div id="modal-rapat" class="modal">
+    <div id="modal-rapat" class="modal">
+      <label for="t-rapat" class="modal-backdrop" aria-label="Tutup"></label>
 
-    <label for="t-rapat" class="modal-backdrop" aria-label="Tutup"></label>
-
-    <div class="modal-box">
-
+      <div class="modal-box">
         <label for="t-rapat" class="modal-close" aria-label="Tutup"></label>
 
         <div class="modal-gallery">
+          <input type="radio" name="rapat" id="rapat-1" checked />
+          <input type="radio" name="rapat" id="rapat-2" />
+          <input type="radio" name="rapat" id="rapat-3" />
 
-            <input type="radio" name="rapat" id="rapat-1" checked>
-            <input type="radio" name="rapat" id="rapat-2">
-            <input type="radio" name="rapat" id="rapat-3">
-
-            <div class="modal-track">
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Rapat organisasi">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Diskusi tim">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Penyusunan program">
-                </div>
-
+          <div class="modal-track">
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Rapat organisasi"
+              />
             </div>
 
-            <div class="modal-nav">
-                <label for="rapat-1"></label>
-                <label for="rapat-2"></label>
-                <label for="rapat-3"></label>
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Diskusi tim"
+              />
             </div>
 
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Penyusunan program"
+              />
+            </div>
+          </div>
+
+          <div class="modal-nav">
+            <label for="rapat-1"></label>
+            <label for="rapat-2"></label>
+            <label for="rapat-3"></label>
+          </div>
         </div>
 
         <div class="modal-content">
+          <span class="tag">KEGIATAN</span>
 
-            <span class="tag">KEGIATAN</span>
+          <h2>Rapat &amp; Evaluasi</h2>
 
-            <h2>Rapat &amp; Evaluasi</h2>
-
-            <p>
-                Koordinasi internal pengurus untuk menyusun
-                program, mengevaluasi progres, dan menyamakan
-                arah organisasi.
-            </p>
-
+          <p>
+            Koordinasi internal pengurus untuk menyusun program, mengevaluasi
+            progres, dan menyamakan arah organisasi.
+          </p>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-
-<!-- =========================
+    <!-- =========================
      MODAL KOMPETISI
 ========================= -->
 
-<div id="modal-kompetisi" class="modal">
+    <div id="modal-kompetisi" class="modal">
+      <label
+        for="t-kompetisi"
+        class="modal-backdrop"
+        aria-label="Tutup"
+      ></label>
 
-    <label for="t-kompetisi" class="modal-backdrop" aria-label="Tutup"></label>
-
-    <div class="modal-box">
-
+      <div class="modal-box">
         <label for="t-kompetisi" class="modal-close" aria-label="Tutup"></label>
 
         <div class="modal-gallery">
+          <input type="radio" name="kompetisi" id="kompetisi-1" checked />
+          <input type="radio" name="kompetisi" id="kompetisi-2" />
+          <input type="radio" name="kompetisi" id="kompetisi-3" />
 
-            <input type="radio" name="kompetisi" id="kompetisi-1" checked>
-            <input type="radio" name="kompetisi" id="kompetisi-2">
-            <input type="radio" name="kompetisi" id="kompetisi-3">
-
-            <div class="modal-track">
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Kompetisi teknologi">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Pemrograman">
-                </div>
-
-                <div class="modal-slide">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Keamanan teknologi">
-                </div>
-
+          <div class="modal-track">
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Kompetisi teknologi"
+              />
             </div>
 
-            <div class="modal-nav">
-                <label for="kompetisi-1"></label>
-                <label for="kompetisi-2"></label>
-                <label for="kompetisi-3"></label>
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Pemrograman"
+              />
             </div>
 
+            <div class="modal-slide">
+              <img
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
+                alt="Keamanan teknologi"
+              />
+            </div>
+          </div>
+
+          <div class="modal-nav">
+            <label for="kompetisi-1"></label>
+            <label for="kompetisi-2"></label>
+            <label for="kompetisi-3"></label>
+          </div>
         </div>
 
         <div class="modal-content">
+          <span class="tag">PROGRAM KERJA</span>
 
-            <span class="tag">PROGRAM KERJA</span>
+          <h2>Kompetisi Teknologi</h2>
 
-            <h2>Kompetisi Teknologi</h2>
-
-            <p>
-                Wadah mahasiswa mengasah kemampuan dan
-                mengukir prestasi di berbagai lomba
-                teknologi tingkat nasional.
-            </p>
-
+          <p>
+            Wadah mahasiswa mengasah kemampuan dan mengukir prestasi di berbagai
+            lomba teknologi tingkat nasional.
+          </p>
         </div>
-
+      </div>
     </div>
-
-</div>
-
 
     <!-- =========================================================
          FOOTER
@@ -1027,6 +1021,5 @@ body:has(.modal-toggle:checked) {
         <path d="M12 19V5M6 11l6-6 6 6" />
       </svg>
     </a>
-
-</body>
+  </body>
 </html>
